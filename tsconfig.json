@@ -5,7 +5,11 @@
         "strict": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["src/*"]
+            "@/*": ["src/*"],
+            "@layouts/*": ["src/layouts/*"],
+            "@components/*": ["src/components/*"],
+            "@utils/*": ["src/utils/*"],
+            "@pages/*": ["src/pages/*"]
         }
     },
     "references": [
