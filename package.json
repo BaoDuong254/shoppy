@@ -9,8 +9,8 @@
         "lint": "eslint --cache .",
         "preview": "vite preview",
         "lint:fix": "eslint . --fix",
-        "prettier": "prettier --check \"src/**/(*.tsx|*.ts|*.css|*.scss)\"",
-        "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.css|*.scss)\"",
+        "prettier": "prettier . --check ",
+        "prettier:fix": "prettier . --write",
         "prepare": "husky"
     },
     "dependencies": {
