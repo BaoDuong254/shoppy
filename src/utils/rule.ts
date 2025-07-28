@@ -1,4 +1,4 @@
-import type { RegisterOptions } from "react-hook-form";
+import type { RegisterOptions, UseFormGetValues } from "react-hook-form";
 
 interface FormData {
     email: string;
@@ -13,7 +13,8 @@ type Rules = {
     >;
 };
 
-export const rules: Rules = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getRules = (getValues?: UseFormGetValues<any>): Rules => ({
     email: {
         required: {
             value: true,
@@ -59,5 +60,11 @@ export const rules: Rules = {
             value: 160,
             message: "Nhập lại password không được quá 160 ký tự",
         },
+        validate:
+            typeof getValues === "function"
+                ? (value) =>
+                      value === getValues("password") ||
+                      "Nhập lại password không khớp"
+                : undefined,
     },
-};
+});
