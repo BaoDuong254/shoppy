@@ -1,13 +1,10 @@
 import Input from "@/components/Input";
-import { getRules } from "@/utils/rule";
-import { useForm, type RegisterOptions } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema, type Schema } from "@/utils/rule";
 
-interface FormData {
-    email: string;
-    password: string;
-    confirm_password: string;
-}
+type FormData = Schema;
 
 export default function Register() {
     const {
@@ -15,9 +12,9 @@ export default function Register() {
         handleSubmit,
         getValues,
         formState: { errors },
-    } = useForm<FormData>();
-
-    const rules = getRules(getValues);
+    } = useForm<FormData>({
+        resolver: yupResolver(schema),
+    });
 
     const onSubmit = handleSubmit(
         (data) => {
@@ -46,7 +43,6 @@ export default function Register() {
                                 className='mt-8'
                                 errorMessage={errors.email?.message}
                                 placeholder='Nhập email'
-                                rules={rules.email as RegisterOptions}
                             />
                             <Input
                                 name='password'
@@ -55,7 +51,6 @@ export default function Register() {
                                 className='mt-2'
                                 errorMessage={errors.password?.message}
                                 placeholder='Nhập mật khẩu'
-                                rules={rules.password as RegisterOptions}
                                 autoComplete='on'
                             />
                             <Input
@@ -65,9 +60,6 @@ export default function Register() {
                                 className='mt-2'
                                 errorMessage={errors.confirm_password?.message}
                                 placeholder='Confirm Password'
-                                rules={
-                                    rules.confirm_password as RegisterOptions
-                                }
                                 autoComplete='on'
                             />
                             <div className='mt-3'>
