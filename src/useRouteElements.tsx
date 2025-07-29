@@ -5,27 +5,27 @@ import Register from "@pages/Register";
 import RegisterLayout from "@layouts/RegisterLayout";
 
 export default function useRouteElements() {
-    const routeElements = useRoutes([
-        {
-            path: "/",
-            element: <ProductList />,
-        },
-        {
-            path: "/login",
-            element: (
-                <RegisterLayout>
-                    <Login />
-                </RegisterLayout>
-            ),
-        },
-        {
-            path: "/register",
-            element: (
-                <RegisterLayout>
-                    <Register />
-                </RegisterLayout>
-            ),
-        },
-    ]);
-    return routeElements;
+  const routeElements = useRoutes([
+    {
+      path: "/",
+      element: <ProductList />,
+    },
+    {
+      path: "/login",
+      element: (
+        <RegisterLayout>
+          <Login />
+        </RegisterLayout>
+      ),
+    },
+    {
+      path: "/register",
+      element: (
+        <RegisterLayout>
+          <Register />
+        </RegisterLayout>
+      ),
+    },
+  ]);
+  return routeElements;
 }
