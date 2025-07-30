@@ -1,10 +1,14 @@
 import HttpStatusCode from "@/constants/httpStatusCode";
 import axios, { type AxiosInstance } from "axios";
 import { toast } from "react-toastify";
+import { clearAccessTokenFromLS, getAccessTokenFromLS, saveAccessTokenToLS } from "./auth";
+import type { AuthResponse } from "@/types/auth.type";
 
 class Http {
   instance: AxiosInstance;
+  private accessToken: string;
   constructor() {
+    this.accessToken = getAccessTokenFromLS();
     this.instance = axios.create({
       baseURL: `${import.meta.env.VITE_API_BASE_URL}`,
       timeout: 10000,
@@ -12,8 +16,23 @@ class Http {
         "Content-Type": "application/json",
       },
     });
+    this.instance.interceptors.request.use((config) => {
+      if (this.accessToken && config.headers) {
+        config.headers.authorization = this.accessToken;
+        return config;
+      }
+      return config;
+    });
     this.instance.interceptors.response.use(
-      function (response) {
+      (response) => {
+        const { url } = response.config;
+        if (url === "/login" || url === "/register") {
+          this.accessToken = (response.data as AuthResponse).data.access_token;
+          saveAccessTokenToLS(this.accessToken);
+        } else if (url === "/logout") {
+          this.accessToken = "";
+          clearAccessTokenFromLS();
+        }
         return response;
       },
       function (error) {
