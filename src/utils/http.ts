@@ -1,9 +1,9 @@
-import HttpStatusCode from "@/constants/httpStatusCode";
+import HttpStatusCode from "@constants/httpStatusCode";
 import axios, { type AxiosInstance } from "axios";
 import { toast } from "react-toastify";
 import { clearLS, getAccessTokenFromLS, setAccessTokenToLS, setProfileToLS } from "./auth";
 import type { AuthResponse } from "@/types/auth.type";
-import path from "@/constants/path";
+import path from "@constants/path";
 
 class Http {
   instance: AxiosInstance;

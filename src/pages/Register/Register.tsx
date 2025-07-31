@@ -1,16 +1,16 @@
-import Input from "@/components/Input";
+import Input from "@components/Input";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { schema, type Schema } from "@/utils/rule";
-import authApi from "@/apis/auth.api";
+import { schema, type Schema } from "@utils/rule";
+import authApi from "@apis/auth.api";
 import { useMutation } from "@tanstack/react-query";
 import { omit } from "lodash";
-import { isAxiosUnprocessableEntityError } from "@/utils/utils";
+import { isAxiosUnprocessableEntityError } from "@utils/utils";
 import type { ErrorResponse } from "@/types/utils.type";
 import { useContext } from "react";
-import { AppContext } from "@/contexts/app.context";
-import Button from "@/components/Button";
+import { AppContext } from "@contexts/app.context";
+import Button from "@components/Button";
 
 type FormData = Schema;
 

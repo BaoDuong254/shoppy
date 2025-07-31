@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import AsideFilter from "./AsideFilter";
 import Product from "./Product/Product";
 import SortProductList from "./SortProductList";
-import productApi from "@/apis/product.api";
-import useQueryParams from "@/hooks/useQueryParams";
+import productApi from "@apis/product.api";
+import useQueryParams from "@hooks/useQueryParams";
 
 export default function ProductList() {
   const queryParams = useQueryParams();

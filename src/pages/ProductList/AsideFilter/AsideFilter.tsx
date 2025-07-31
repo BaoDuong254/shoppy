@@ -1,6 +1,6 @@
-import Button from "@/components/Button";
-import Input from "@/components/Input";
-import path from "@/constants/path";
+import Button from "@components/Button";
+import Input from "@components/Input";
+import path from "@constants/path";
 import { Link } from "react-router-dom";
 
 export default function AsideFilter() {

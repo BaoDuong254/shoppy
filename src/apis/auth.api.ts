@@ -1,5 +1,5 @@
 import type { AuthResponse } from "@/types/auth.type";
-import http from "@/utils/http";
+import http from "@utils/http";
 
 const authApi = {
   registerAccount(body: { email: string; password: string }) {
