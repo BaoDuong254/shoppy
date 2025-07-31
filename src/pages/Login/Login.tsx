@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema, type Schema } from "@utils/rule";
 import { useMutation } from "@tanstack/react-query";
-import { login } from "@/apis/auth.api";
+import authApi from "@/apis/auth.api";
 import { isAxiosUnprocessableEntityError } from "@/utils/utils";
 import { type ErrorResponse } from "@/types/utils.type";
 import Input from "@/components/Input";
@@ -28,7 +28,7 @@ export default function Login() {
   });
 
   const loginMutation = useMutation({
-    mutationFn: (body: Omit<FormData, "confirm_password">) => login(body),
+    mutationFn: (body: Omit<FormData, "confirm_password">) => authApi.login(body),
   });
 
   const onSubmit = handleSubmit((data) => {

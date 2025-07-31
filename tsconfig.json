@@ -13,7 +13,8 @@
       "@types/*": ["src/types/*"],
       "@apis/*": ["src/apis/*"],
       "@constants/*": ["src/constants/*"],
-      "@contexts/*": ["src/contexts/*"]
+      "@contexts/*": ["src/contexts/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   },
   "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
