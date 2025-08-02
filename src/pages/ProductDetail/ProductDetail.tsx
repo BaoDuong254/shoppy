@@ -1,6 +1,6 @@
 import productApi from "@apis/product.api";
 import ProductRating from "@components/ProductRating";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { formatCurrency, formatNumberToSocialStyle, getIdFromNameId, rateSale } from "@utils/utils";
 import { useParams } from "react-router-dom";
 import DOMPurify from "dompurify";
@@ -8,6 +8,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { Product as ProductType, ProductListConfig } from "@/types/product.type";
 import Product from "@pages/ProductList/components/Product";
 import QuantityController from "@components/QuantityController";
+import purchaseApi from "@apis/purchase.api";
+import { toast } from "react-toastify";
+import { purchaseStatus } from "@constants/purchase";
+import { queryClient } from "@/main";
 
 export default function ProductDetail() {
   const { nameId } = useParams();
@@ -37,6 +41,10 @@ export default function ProductDetail() {
     },
     staleTime: 3 * 60 * 1000,
     enabled: Boolean(product),
+  });
+
+  const addToCartMutation = useMutation({
+    mutationFn: (body: { buy_count: number; product_id: string }) => purchaseApi.addToCart(body),
   });
 
   useEffect(() => {
@@ -86,6 +94,27 @@ export default function ProductDetail() {
 
   const handleBuyCount = (value: number) => {
     setBuyCount(value);
+  };
+
+  const addToCart = () => {
+    addToCartMutation.mutate(
+      { buy_count: buyCount, product_id: product?._id as string },
+      {
+        onSuccess: (data) => {
+          toast.success(data.data.message, {
+            autoClose: 1000,
+          });
+          queryClient.invalidateQueries({
+            queryKey: [
+              "purchases",
+              {
+                status: purchaseStatus.inCart,
+              },
+            ],
+          });
+        },
+      }
+    );
   };
 
   if (!product) return null;
@@ -161,7 +190,7 @@ export default function ProductDetail() {
               <h1 className='text-xl font-medium uppercase'>{product.name}</h1>
               <div className='mt-8 flex items-center'>
                 <div className='flex items-center'>
-                  <span className='mr-1 border-b border-b-orange text-orange'>{product.rating}</span>
+                  <span className='mr-1 border-b border-b-orange text-orange'>{+product.rating.toFixed(1)}</span>
                   <ProductRating
                     rating={product.rating}
                     activeClassname='fill-orange text-orange h-4 w-4'
@@ -196,6 +225,7 @@ export default function ProductDetail() {
                 <button
                   className='flex h-12 items-center justify-center rounded-sm border border-orange bg-orange/10 px-5 capitalize text-orange shadow-sm hover:bg-orange/5'
                   type='button'
+                  onClick={addToCart}
                 >
                   <svg
                     enableBackground='new 0 0 15 15'

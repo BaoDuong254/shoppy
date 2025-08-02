@@ -4,6 +4,6 @@ export const purchaseStatus = {
   waitForConfirmation: 1,
   waitForGetting: 2,
   inProgress: 3,
-  delevered: 4,
+  delivered: 4,
   cancelled: 5,
 } as const;
