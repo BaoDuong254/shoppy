@@ -2,14 +2,15 @@ import productApi from "@apis/product.api";
 import InputNumber from "@components/InputNumber";
 import ProductRating from "@components/ProductRating";
 import { useQuery } from "@tanstack/react-query";
-import { formatCurrency, formatNumberToSocialStyle, rateSale } from "@utils/utils";
+import { formatCurrency, formatNumberToSocialStyle, getIdFromNameId, rateSale } from "@utils/utils";
 import { useParams } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Product } from "@/types/product.type";
 
 export default function ProductDetail() {
-  const { id } = useParams();
+  const { nameId } = useParams();
+  const id = getIdFromNameId(nameId as string);
   const { data: productDetailData } = useQuery({
     queryKey: ["product", id],
     queryFn: () => productApi.getProductDetail(id as string),
