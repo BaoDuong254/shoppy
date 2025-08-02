@@ -17,6 +17,7 @@ export default function ProductList() {
       return productApi.getProducts(queryConfig as ProductListConfig);
     },
     placeholderData: keepPreviousData,
+    staleTime: 3 * 60 * 1000, // 3 minutes
   });
 
   const { data: categoriesData } = useQuery({
