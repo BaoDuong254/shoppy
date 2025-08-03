@@ -2,7 +2,7 @@ import productApi from "@apis/product.api";
 import ProductRating from "@components/ProductRating";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { formatCurrency, formatNumberToSocialStyle, getIdFromNameId, rateSale } from "@utils/utils";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Product as ProductType, ProductListConfig } from "@/types/product.type";
@@ -12,8 +12,10 @@ import purchaseApi from "@apis/purchase.api";
 import { toast } from "react-toastify";
 import { purchaseStatus } from "@constants/purchase";
 import { queryClient } from "@/main";
+import path from "@constants/path";
 
 export default function ProductDetail() {
+  const navigate = useNavigate();
   const { nameId } = useParams();
   const id = getIdFromNameId(nameId as string);
   const { data: productDetailData } = useQuery({
@@ -115,6 +117,19 @@ export default function ProductDetail() {
         },
       }
     );
+  };
+
+  const buyNow = async () => {
+    const res = await addToCartMutation.mutateAsync({
+      buy_count: buyCount,
+      product_id: product?._id as string,
+    });
+    const purchase = res.data.data;
+    navigate(path.cart, {
+      state: {
+        purchaseId: purchase._id,
+      },
+    });
   };
 
   if (!product) return null;
@@ -253,8 +268,9 @@ export default function ProductDetail() {
                   Thêm vào giỏ hàng
                 </button>
                 <button
-                  className='fkex ml-4 h-12 min-w-[5rem] items-center justify-center rounded-sm bg-orange px-5 capitalize text-white shadow-sm outline-none hover:bg-orange/90'
+                  className='ml-4 flex h-12 min-w-[5rem] items-center justify-center rounded-sm bg-orange px-5 capitalize text-white shadow-sm outline-none hover:bg-orange/90'
                   type='button'
+                  onClick={buyNow}
                 >
                   Mua ngay
                 </button>
