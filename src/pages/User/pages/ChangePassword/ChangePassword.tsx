@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import { userSchema, type UserSchema } from "@utils/rule";
 import { isAxiosUnprocessableEntityError } from "@utils/utils";
-import { omit } from "lodash";
+import omit from "lodash/omit";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 

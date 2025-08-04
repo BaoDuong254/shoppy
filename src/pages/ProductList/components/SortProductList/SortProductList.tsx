@@ -2,7 +2,7 @@ import { sortBy, order as orderConstant } from "@constants/product";
 import { createSearchParams, Link, useNavigate } from "react-router-dom";
 import type { ProductListConfig } from "@/types/product.type";
 import path from "@constants/path";
-import { omit } from "lodash";
+import omit from "lodash/omit";
 import classNames from "classnames";
 import type { QueryConfig } from "@hooks/useQueryConfig";
 

@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema, type Schema } from "@utils/rule";
 import authApi from "@apis/auth.api";
 import { useMutation } from "@tanstack/react-query";
-import { omit } from "lodash";
+import omit from "lodash/omit";
 import { isAxiosUnprocessableEntityError } from "@utils/utils";
 import type { ErrorResponse } from "@/types/utils.type";
 import { useContext } from "react";
