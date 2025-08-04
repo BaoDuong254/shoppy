@@ -1,6 +1,6 @@
 import productApi from "@apis/product.api";
 import ProductRating from "@components/ProductRating";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { formatCurrency, formatNumberToSocialStyle, getIdFromNameId, rateSale } from "@utils/utils";
 import { useNavigate, useParams } from "react-router-dom";
 import DOMPurify from "dompurify";
@@ -11,10 +11,10 @@ import QuantityController from "@components/QuantityController";
 import purchaseApi from "@apis/purchase.api";
 import { toast } from "react-toastify";
 import { purchaseStatus } from "@constants/purchase";
-import { queryClient } from "@/main";
 import path from "@constants/path";
 
 export default function ProductDetail() {
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { nameId } = useParams();
   const id = getIdFromNameId(nameId as string);
