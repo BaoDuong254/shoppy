@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { clearLS, getAccessTokenFromLS, setAccessTokenToLS, setProfileToLS } from "./auth";
 import type { AuthResponse } from "@/types/auth.type";
 import path from "@constants/path";
+import config from "@constants/config";
 
 class Http {
   instance: AxiosInstance;
@@ -11,7 +12,7 @@ class Http {
   constructor() {
     this.accessToken = getAccessTokenFromLS();
     this.instance = axios.create({
-      baseURL: `${import.meta.env.VITE_API_BASE_URL}`,
+      baseURL: config.baseUrl,
       timeout: 10000,
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +43,7 @@ class Http {
         if (error.response?.status !== HttpStatusCode.UnprocessableEntity) {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const data: any | undefined = error.response?.data;
-          const message = data.message || error.message;
+          const message = data?.message || error.message;
           toast.error(message);
         }
         if (error.response?.status === HttpStatusCode.Unauthorized) {

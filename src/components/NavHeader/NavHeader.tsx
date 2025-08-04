@@ -6,7 +6,7 @@ import { AppContext } from "@contexts/app.context";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import userImage from "@assets/images/user.svg";
+import { getAvatarUrl } from "@utils/utils";
 
 export default function NavHeader() {
   const queryClient = useQueryClient();
@@ -99,7 +99,7 @@ export default function NavHeader() {
           }
         >
           <div className='mr-2 h-6 w-6 flex-shrink-0'>
-            <img src={profile?.avatar || userImage} alt='avatar' className='h-full w-full rounded-full object-cover' />
+            <img src={getAvatarUrl(profile?.avatar)} alt='avatar' className='h-full w-full rounded-full object-cover' />
           </div>
           <div>{profile?.email}</div>
         </Popover>

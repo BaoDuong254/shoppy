@@ -1,5 +1,6 @@
 import HttpStatusCode from "@constants/httpStatusCode";
 import axios, { AxiosError } from "axios";
+import userImage from "@assets/images/user.svg";
 
 export function isAxiosError<T>(error: unknown): error is AxiosError<T> {
   return axios.isAxiosError(error);
@@ -23,7 +24,7 @@ export function formatNumberToSocialStyle(value: number) {
     .toLowerCase();
 }
 
-export const rateSale = (original: number, sale: number) => Math.round((original - sale) / original) * 100 + "%";
+export const rateSale = (original: number, sale: number) => Math.round(((original - sale) / original) * 100) + "%";
 
 const removeSpecialCharacter = (str: string) =>
   // eslint-disable-next-line no-useless-escape
@@ -37,3 +38,5 @@ export const getIdFromNameId = (nameId: string) => {
   const arr = nameId.split("-i-");
   return arr[arr.length - 1];
 };
+
+export const getAvatarUrl = (avatarName?: string) => (avatarName ? avatarName : userImage);
