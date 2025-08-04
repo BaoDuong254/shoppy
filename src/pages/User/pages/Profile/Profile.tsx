@@ -2,8 +2,8 @@ import type { ErrorResponse } from "@/types/utils.type";
 import userApi from "@apis/user.api";
 import Button from "@components/Button";
 import Input from "@components/Input";
+import InputFile from "@components/InputFile";
 import InputNumber from "@components/InputNumber";
-import config from "@constants/config";
 import { AppContext } from "@contexts/app.context";
 import { yupResolver } from "@hookform/resolvers/yup";
 import DateSelect from "@pages/User/components/DateSelect";
@@ -11,7 +11,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { setProfileToLS } from "@utils/auth";
 import { userSchema, type UserSchema } from "@utils/rule";
 import { getAvatarUrl, isAxiosUnprocessableEntityError } from "@utils/utils";
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
@@ -24,8 +24,6 @@ type FormDataError = Omit<FormData, "date_of_birth"> & {
 const profileSchema = userSchema.pick(["name", "address", "phone", "date_of_birth", "avatar"]);
 
 export default function Profile() {
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
   const { setProfile } = useContext(AppContext);
 
   const [file, setFile] = useState<File>();
@@ -117,19 +115,8 @@ export default function Profile() {
     }
   });
 
-  const handleUpload = () => {
-    fileInputRef.current?.click();
-  };
-
-  const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const fileFromLocal = event.target.files?.[0];
-    if (fileFromLocal && (fileFromLocal.size >= config.maxSizeUploadAvatar || !fileFromLocal.type.includes("image"))) {
-      toast.error(`Dung lượng file tối đa 1MB. Định dạng: .JPEG, .PNG`, {
-        position: "top-center",
-      });
-    } else {
-      setFile(fileFromLocal);
-    }
+  const handleChangeFile = (file?: File) => {
+    setFile(file);
   };
 
   return (
@@ -216,25 +203,7 @@ export default function Profile() {
                 className='h-full w-full rounded-full object-cover'
               />
             </div>
-            <input
-              className='hidden'
-              type='file'
-              accept='.jpg,.jpeg,.png'
-              ref={fileInputRef}
-              onChange={onFileChange}
-              onClick={(event) => {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                (event.target as any).value = null;
-              }}
-              aria-label='Chọn ảnh đại diện'
-            />
-            <button
-              className='flex h-10 items-center justify-end rounded-sm border bg-white px-6 text-sm text-gray-600 shadow-sm'
-              type='button'
-              onClick={handleUpload}
-            >
-              Chọn ảnh
-            </button>
+            <InputFile onChange={handleChangeFile} />
             <div className='mt-3 text-gray-400'>
               <div>Dụng lượng file tối đa 1 MB</div>
               <div>Định dạng:.JPEG, .PNG</div>
