@@ -3,6 +3,7 @@ import userApi from "@apis/user.api";
 import Button from "@components/Button";
 import Input from "@components/Input";
 import InputNumber from "@components/InputNumber";
+import config from "@constants/config";
 import { AppContext } from "@contexts/app.context";
 import { yupResolver } from "@hookform/resolvers/yup";
 import DateSelect from "@pages/User/components/DateSelect";
@@ -122,7 +123,13 @@ export default function Profile() {
 
   const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const fileFromLocal = event.target.files?.[0];
-    setFile(fileFromLocal);
+    if (fileFromLocal && (fileFromLocal.size >= config.maxSizeUploadAvatar || !fileFromLocal.type.includes("image"))) {
+      toast.error(`Dung lượng file tối đa 1MB. Định dạng: .JPEG, .PNG`, {
+        position: "top-center",
+      });
+    } else {
+      setFile(fileFromLocal);
+    }
   };
 
   return (
@@ -213,9 +220,13 @@ export default function Profile() {
               className='hidden'
               type='file'
               accept='.jpg,.jpeg,.png'
-              aria-label='Chọn file'
               ref={fileInputRef}
               onChange={onFileChange}
+              onClick={(event) => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (event.target as any).value = null;
+              }}
+              aria-label='Chọn ảnh đại diện'
             />
             <button
               className='flex h-10 items-center justify-end rounded-sm border bg-white px-6 text-sm text-gray-600 shadow-sm'
