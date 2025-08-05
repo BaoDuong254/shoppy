@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import { produce } from "immer";
 import noProduct from "@assets/images/no-product.png";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 export default function Cart() {
   const { t } = useTranslation("cart");
@@ -151,6 +152,10 @@ export default function Cart() {
 
   return (
     <div className='bg-neutral-100 py-16'>
+      <Helmet>
+        <title>{t("cart icon")} | Shoppy</title>
+        <meta name='description' content='Your shopping cart on Shoppy' />
+      </Helmet>
       <div className='container'>
         {extendedPurchases.length > 0 ? (
           <>

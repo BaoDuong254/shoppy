@@ -11,6 +11,7 @@ import { AppContext } from "@contexts/app.context";
 import Button from "@components/Button";
 import type { ErrorResponse } from "@/types/utils.type";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 type FormData = Pick<Schema, "email" | "password">;
 const loginSchema = schema.pick(["email", "password"]);
@@ -59,6 +60,10 @@ export default function Login() {
 
   return (
     <div className='bg-orange'>
+      <Helmet>
+        <title>{t("login")} | Shoppy</title>
+        <meta name='description' content='Log in to your Shoppy account' />
+      </Helmet>
       <div className='container'>
         <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-32 lg:pr-10'>
           <div className='lg:col-span-2 lg:col-start-4'>
