@@ -6,6 +6,7 @@ import { AppContext } from "./contexts/app.context";
 import path from "@constants/path";
 import CartLayout from "@layouts/CartLayout";
 import UserLayout from "@pages/User/layouts/UserLayout";
+import Loading from "@components/Loading";
 
 const Login = lazy(() => import("@pages/Login"));
 const Register = lazy(() => import("@pages/Register"));
@@ -37,7 +38,7 @@ export default function useRouteElements() {
           path: path.login,
           element: (
             <RegisterLayout>
-              <Suspense>
+              <Suspense fallback={<Loading />}>
                 <Login />
               </Suspense>
             </RegisterLayout>
@@ -47,7 +48,7 @@ export default function useRouteElements() {
           path: path.register,
           element: (
             <RegisterLayout>
-              <Suspense>
+              <Suspense fallback={<Loading />}>
                 <Register />
               </Suspense>
             </RegisterLayout>
@@ -63,7 +64,7 @@ export default function useRouteElements() {
           path: path.cart,
           element: (
             <CartLayout>
-              <Suspense>
+              <Suspense fallback={<Loading />}>
                 <Cart />
               </Suspense>
             </CartLayout>
@@ -80,7 +81,7 @@ export default function useRouteElements() {
             {
               path: path.profile,
               element: (
-                <Suspense>
+                <Suspense fallback={<Loading />}>
                   <Profile />
                 </Suspense>
               ),
@@ -88,7 +89,7 @@ export default function useRouteElements() {
             {
               path: path.changePassword,
               element: (
-                <Suspense>
+                <Suspense fallback={<Loading />}>
                   <ChangePassword />
                 </Suspense>
               ),
@@ -96,7 +97,7 @@ export default function useRouteElements() {
             {
               path: path.historyPurchase,
               element: (
-                <Suspense>
+                <Suspense fallback={<Loading />}>
                   <HistoryPurchase />
                 </Suspense>
               ),
@@ -109,7 +110,7 @@ export default function useRouteElements() {
       path: path.productDetail,
       element: (
         <MainLayout>
-          <Suspense>
+          <Suspense fallback={<Loading />}>
             <ProductDetail />
           </Suspense>
         </MainLayout>
@@ -120,7 +121,7 @@ export default function useRouteElements() {
       index: true,
       element: (
         <MainLayout>
-          <Suspense>
+          <Suspense fallback={<Loading />}>
             <ProductList />
           </Suspense>
         </MainLayout>
@@ -130,7 +131,7 @@ export default function useRouteElements() {
       path: "*",
       element: (
         <MainLayout>
-          <Suspense>
+          <Suspense fallback={<Loading />}>
             <NotFound />
           </Suspense>
         </MainLayout>
