@@ -1,5 +1,6 @@
 import range from "lodash/range";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   onChange?: (value: Date) => void;
@@ -13,6 +14,8 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
     month: value?.getMonth() || 0,
     year: value?.getFullYear() || 1990,
   });
+
+  const { t } = useTranslation("profile");
 
   useEffect(() => {
     if (value) {
@@ -40,7 +43,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
 
   return (
     <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-      <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right'>Ngày sinh</div>
+      <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right'>{t("accountSettings.dateOfBirth")}</div>
       <div className='sm:w-[80%] sm:pl-5'>
         <div className='flex justify-between'>
           <select
@@ -50,7 +53,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
             value={value?.getDate() || date.date}
             aria-label='Chọn ngày'
           >
-            <option disabled>Ngày</option>
+            <option disabled>{t("accountSettings.dateDetail.day")}</option>
             {range(1, 32).map((item) => (
               <option value={item} key={item}>
                 {item}
@@ -64,7 +67,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
             value={value?.getMonth() || date.month}
             aria-label='Chọn tháng'
           >
-            <option disabled>Tháng</option>
+            <option disabled>{t("accountSettings.dateDetail.month")}</option>
             {range(0, 12).map((item) => (
               <option value={item} key={item}>
                 {item + 1}
@@ -78,7 +81,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
             value={value?.getFullYear() || date.year}
             aria-label='Chọn năm'
           >
-            <option disabled>Năm</option>
+            <option disabled>{t("accountSettings.dateDetail.year")}</option>
             {range(1900, 2026).map((item) => (
               <option value={item} key={item}>
                 {item}

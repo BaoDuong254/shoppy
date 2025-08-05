@@ -11,6 +11,7 @@ import type { ErrorResponse } from "@/types/utils.type";
 import { useContext } from "react";
 import { AppContext } from "@contexts/app.context";
 import Button from "@components/Button";
+import { useTranslation } from "react-i18next";
 
 type FormData = Pick<Schema, "email" | "password" | "confirm_password">;
 const registerSchema = schema.pick(["email", "password", "confirm_password"]);
@@ -18,6 +19,7 @@ const registerSchema = schema.pick(["email", "password", "confirm_password"]);
 export default function Register() {
   const { setIsAuthenticated, setProfile } = useContext(AppContext);
   const navigate = useNavigate();
+  const { t } = useTranslation("login-register");
 
   const {
     register,
@@ -62,14 +64,14 @@ export default function Register() {
         <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-32 lg:pr-10'>
           <div className='lg:col-span-2 lg:col-start-4'>
             <form onSubmit={onSubmit} className='rounded bg-white p-10 shadow-sm' noValidate>
-              <div className='text-2xl'>Đăng ký</div>
+              <div className='text-2xl'>{t("register")}</div>
               <Input
                 name='email'
                 register={register}
                 type='email'
                 className='mt-8'
                 errorMessage={errors.email?.message}
-                placeholder='Nhập email'
+                placeholder={t("email")}
               />
               <Input
                 name='password'
@@ -78,7 +80,7 @@ export default function Register() {
                 className='mt-2'
                 classNameEye='absolute right-[5px] h-5 w-5 cursor-pointer top-[12px]'
                 errorMessage={errors.password?.message}
-                placeholder='Nhập mật khẩu'
+                placeholder={t("password")}
                 autoComplete='on'
               />
               <Input
@@ -88,7 +90,7 @@ export default function Register() {
                 className='mt-2'
                 classNameEye='absolute right-[5px] h-5 w-5 cursor-pointer top-[12px]'
                 errorMessage={errors.confirm_password?.message}
-                placeholder='Nhập lại mật khẩu'
+                placeholder={t("confirmPassword")}
                 autoComplete='on'
               />
               <div className='mt-3'>
@@ -97,13 +99,13 @@ export default function Register() {
                   isLoading={registerAccountMutation.isPending}
                   disabled={registerAccountMutation.isPending}
                 >
-                  Đăng ký
+                  {t("register")}
                 </Button>
               </div>
               <div className='mt-8 flex items-center justify-center'>
-                <span className='text-gray-300'>Bạn đã có tài khoản?</span>
+                <span className='text-gray-300'>{t("haveAccount")}</span>
                 <Link to='/login' className='ml-1 text-red-400'>
-                  Đăng nhập
+                  {t("login")}
                 </Link>
               </div>
             </form>

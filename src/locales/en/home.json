@@ -1,0 +1,49 @@
+{
+  "aside filter": {
+    "all categories": "All categories",
+    "filter search": "Filter",
+    "range price": "Price range",
+    "price from": "FROM",
+    "price to": "TO",
+    "apply": "Apply",
+    "evaluate": "Rating",
+    "or more": "Or more",
+    "delete filter": "Clear all"
+  },
+  "pagination": {
+    "prev": "Prev",
+    "next": "Next"
+  },
+  "sortProducts": {
+    "sort by": "Sort by",
+    "newest": "Newest",
+    "best seller": "Best Seller",
+    "most viewed": "Most Viewed",
+    "price": "Price",
+    "price low to high": "Price: Low to High",
+    "price high to low": "Price: High to Low"
+  },
+  "footer": {
+    "copyright": "© 2025 Shopee. All Rights Reserved.",
+    "country_region": "Country & Region: Singapore | Indonesia | Thailand | Malaysia | Vietnam | Philippines | Brazil | México | Colombia | Chile | Taiwan",
+    "company": "Shopee Company Limited",
+    "address": "Floors 4-5-6, Capital Place Building, No. 29, Lieu Giai Street, Ngoc Khanh ward, Ba Dinh District, Hanoi, Vietnam",
+    "person": "Person in charge of information management: Nguyen Bui Anh Tuan",
+    "tax_code": "Business Registration Certificate No: 0106773786",
+    "first_copyright": "© 2015 - Copyright belongs to Shopee Company Limited"
+  },
+  "header": {
+    "search": "Search products, brands and categories",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "my account": "My Account",
+    "purchases": "Purchase History",
+    "no products": "No products found",
+    "cart": {
+      "new products": "New products added",
+      "add to cart": "Add to Cart",
+      "view cart": "View Cart"
+    }
+  }
+}

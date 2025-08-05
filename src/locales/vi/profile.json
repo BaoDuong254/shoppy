@@ -1,0 +1,37 @@
+{
+  "editProfile": "Sửa Hồ Sơ",
+  "MyProfile": "Hồ Sơ Của Tôi",
+  "MyAccount": "Tài Khoản Của Tôi",
+  "ChangePassword": "Đổi Mật Khẩu",
+  "PurchaseHistory": "Đơn Mua",
+  "keepProfilePrivate": "Quản lý thông tin hồ sơ để bảo mật tài khoản",
+  "save": "Lưu",
+  "accountSettings": {
+    "name": "Tên",
+    "phoneNumber": "Số Điện Thoại",
+    "address": "Địa Chỉ",
+    "dateOfBirth": "Ngày Sinh",
+    "dateDetail": {
+      "day": "Ngày",
+      "month": "Tháng",
+      "year": "Năm"
+    },
+    "choose avatar": "Chọn Ảnh Đại Diện",
+    "avatarSize": "Kích thước tệp tối đa 1 MB",
+    "avatarFormat": "Định dạng: .JPEG, .PNG"
+  },
+  "passwordSettings": {
+    "currentPassword": "Mật Khẩu Hiện Tại",
+    "newPassword": "Mật Khẩu Mới",
+    "confirmNewPassword": "Nhập Lại Mật Khẩu Mới"
+  },
+  "purchaseHistorySettings": {
+    "allOrders": "Tất Cả",
+    "processingOrders": "Chờ xác nhận",
+    "pendingOrders": "Chờ lấy hàng",
+    "deliveringOrders": "Đang giao",
+    "deliveredOrders": "Đã giao",
+    "cancelledOrders": "Đã hủy",
+    "totalPrice": "Tổng giá tiền"
+  }
+}

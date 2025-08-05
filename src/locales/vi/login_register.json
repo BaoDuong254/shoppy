@@ -1,0 +1,9 @@
+{
+  "login": "Đăng nhập",
+  "register": "Đăng ký",
+  "password": "Nhập mật khẩu",
+  "email": "Nhập email",
+  "confirmPassword": "Nhập lại mật khẩu",
+  "haveAccount": "Bạn đã có tài khoản?",
+  "dontHaveAccount": "Bạn chưa có tài khoản?"
+}

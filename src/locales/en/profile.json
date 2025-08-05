@@ -1,0 +1,37 @@
+{
+  "editProfile": "Edit Profile",
+  "MyProfile": "My Profile",
+  "MyAccount": "My Account",
+  "ChangePassword": "Change Password",
+  "PurchaseHistory": "Purchase History",
+  "keepProfilePrivate": "Manage profile information to keep your account secure",
+  "save": "Save",
+  "accountSettings": {
+    "name": "Name",
+    "phoneNumber": "Phone Number",
+    "address": "Address",
+    "dateOfBirth": "Date of Birth",
+    "dateDetail": {
+      "day": "Day",
+      "month": "Month",
+      "year": "Year"
+    },
+    "choose avatar": "Choose Avatar",
+    "avatarSize": "Maximum file size 1 MB",
+    "avatarFormat": "Format: .JPEG, .PNG"
+  },
+  "passwordSettings": {
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm Password"
+  },
+  "purchaseHistorySettings": {
+    "allOrders": "All Orders",
+    "processingOrders": "Processing Orders",
+    "pendingOrders": "Pending Orders",
+    "deliveringOrders": "Delivering Orders",
+    "deliveredOrders": "Delivered Orders",
+    "cancelledOrders": "Cancelled Orders",
+    "totalPrice": "Total Price"
+  }
+}

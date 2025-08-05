@@ -1,0 +1,49 @@
+{
+  "aside filter": {
+    "all categories": "Tất cả danh mục",
+    "filter search": "Bộ lọc tìm kiếm",
+    "range price": "Khoảng giá",
+    "price from": "TỪ",
+    "price to": "ĐẾN",
+    "apply": "Áp dụng",
+    "evaluate": "Đánh giá",
+    "or more": "Trở lên",
+    "delete filter": "Xóa tất cả"
+  },
+  "pagination": {
+    "prev": "Trước",
+    "next": "Sau"
+  },
+  "sortProducts": {
+    "sort by": "Sắp xếp theo",
+    "newest": "Mới nhất",
+    "best seller": "Bán chạy",
+    "most viewed": "Phổ biến",
+    "price": "Giá",
+    "price low to high": "Giá: Thấp đến Cao",
+    "price high to low": "Giá: Cao đến Thấp"
+  },
+  "footer": {
+    "copyright": "© 2025 Shopee. Tất cả các quyền được bảo lưu.",
+    "country_region": "Quốc gia & Khu vực: Singapore | Indonesia | Thái Lan | Malaysia | Việt Nam | Philippines | Brazil | México | Colombia | Chile | Đài Loan",
+    "company": "Công ty TNHH Shopee",
+    "address": "Địa chỉ: Tầng 4-5-6, Tòa nhà Capital Place, số 29 đường Liễu Giai, Phường Ngọc Khánh, Quận Ba Đình, Thành phố Hà Nội, Việt Nam. Chăm sóc khách hàng: Gọi tổng đài Shopee (miễn phí) hoặc Trò chuyện với Shopee ngay trên Trung tâm trợ giúp",
+    "person": "Chịu Trách Nhiệm Quản Lý Nội Dung: Nguyễn Bùi Anh Tuấn",
+    "tax_code": "Mã số doanh nghiệp: 0106773786 do Sở Kế hoạch và Đầu tư TP Hà Nội cấp lần đầu ngày 10/02/2015",
+    "first_copyright": "© 2015 - Bản quyền thuộc về Công ty TNHH Shopee"
+  },
+  "header": {
+    "search": "Free ship đơn từ 0Đ",
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "logout": "Đăng xuất",
+    "my account": "Tài khoản của tôi",
+    "purchases": "Đơn mua",
+    "no products": "Chưa có sản phẩm",
+    "cart": {
+      "new products": "Sản phẩm mới thêm",
+      "add to cart": "Thêm hàng vào giỏ",
+      "view cart": "Xem giỏ hàng"
+    }
+  }
+}

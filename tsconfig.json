@@ -14,6 +14,8 @@
       "@contexts/*": ["src/contexts/*"],
       "@hooks/*": ["src/hooks/*"],
       "@assets/*": ["src/assets/*"],
+      "@i18n/*": ["src/i18n/*"],
+      "@locales/*": ["src/locales/*"],
       "@/*": ["src/*"]
     }
   },

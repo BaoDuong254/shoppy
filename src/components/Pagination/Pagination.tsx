@@ -1,6 +1,7 @@
 import path from "@constants/path";
 import type { QueryConfig } from "@hooks/useQueryConfig";
 import classNames from "classnames";
+import { useTranslation } from "react-i18next";
 import { createSearchParams, Link } from "react-router-dom";
 
 interface Props {
@@ -11,6 +12,8 @@ interface Props {
 const RANGE = 2;
 
 export default function Pagination({ queryConfig, pageSize }: Props) {
+  const { t } = useTranslation("home");
+
   const page = Number(queryConfig.page);
 
   const renderPagination = () => {
@@ -83,7 +86,9 @@ export default function Pagination({ queryConfig, pageSize }: Props) {
   return (
     <div className='mt-6 flex flex-wrap justify-center'>
       {page === 1 ? (
-        <span className='mx-2 cursor-not-allowed rounded border bg-white/60 px-3 py-2 shadow-sm'>Prev</span>
+        <span className='mx-2 cursor-not-allowed rounded border bg-white/60 px-3 py-2 shadow-sm'>
+          {t("pagination.prev")}
+        </span>
       ) : (
         <Link
           to={{
@@ -95,12 +100,14 @@ export default function Pagination({ queryConfig, pageSize }: Props) {
           }}
           className='mx-2 cursor-pointer rounded border bg-white px-3 py-2 shadow-sm'
         >
-          Prev
+          {t("pagination.prev")}
         </Link>
       )}
       {renderPagination()}
       {page === pageSize ? (
-        <span className='mx-2 cursor-not-allowed rounded border bg-white/60 px-3 py-2 shadow-sm'>Next</span>
+        <span className='mx-2 cursor-not-allowed rounded border bg-white/60 px-3 py-2 shadow-sm'>
+          {t("pagination.next")}
+        </span>
       ) : (
         <Link
           to={{
@@ -112,7 +119,7 @@ export default function Pagination({ queryConfig, pageSize }: Props) {
           }}
           className='mx-2 cursor-pointer rounded border bg-white px-3 py-2 shadow-sm'
         >
-          Next
+          {t("pagination.next")}
         </Link>
       )}
     </div>
