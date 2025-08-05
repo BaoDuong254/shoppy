@@ -6,6 +6,7 @@ import tseslint from "typescript-eslint";
 import { globalIgnores } from "eslint/config";
 import eslintPluginPrettier from "eslint-plugin-prettier";
 import react from "eslint-plugin-react";
+import tsdoc from "eslint-plugin-tsdoc";
 
 export default tseslint.config([
   globalIgnores(["dist", "node_modules", "vite.config.ts"]),
@@ -20,6 +21,7 @@ export default tseslint.config([
     plugins: {
       react,
       prettier: eslintPluginPrettier,
+      tsdoc,
     },
     languageOptions: {
       ecmaVersion: 2020,
@@ -30,6 +32,7 @@ export default tseslint.config([
       "react/jsx-no-target-blank": "warn",
       "react-refresh/only-export-components": "off",
       "react/prop-types": "off",
+      "tsdoc/syntax": "warn",
       "prettier/prettier": [
         "warn",
         {
