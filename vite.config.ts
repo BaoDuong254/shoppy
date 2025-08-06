@@ -20,6 +20,16 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: path.resolve(__dirname, "./vitest.setup.js"),
     projects: [
+      // Main project for regular unit tests
+      {
+        extends: true,
+        test: {
+          name: "default",
+          include: ["src/**/*.{test,spec}.{ts,tsx}"],
+          exclude: ["**/*.stories.{ts,tsx}", "node_modules/**"],
+        },
+      },
+      // Storybook project for story tests
       {
         extends: true,
         plugins: [

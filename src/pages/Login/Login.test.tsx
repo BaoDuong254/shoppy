@@ -30,7 +30,7 @@ describe("Login", () => {
     fireEvent.submit(submitButton);
     await waitFor(async () => {
       expect(screen.queryByText("Email là bắt buộc")).toBeTruthy();
-      expect(screen.queryByText("Password là bắt buộc")).toBeTruthy();
+      expect(screen.queryByText("Mật khẩu là bắt buộc")).toBeTruthy();
     });
   });
 
@@ -54,7 +54,7 @@ describe("Login", () => {
     fireEvent.submit(submitButton);
     await waitFor(() => {
       expect(screen.queryByText("Email không đúng định dạng")).toBeTruthy();
-      expect(screen.queryByText("Password không được ít hơn 6 ký tự")).toBeTruthy();
+      expect(screen.queryByText("Độ dài từ 6 - 160 ký tự")).toBeTruthy();
     });
   });
 
@@ -72,7 +72,7 @@ describe("Login", () => {
 
     await waitFor(() => {
       expect(screen.queryByText("Email không đúng định dạng")).toBeFalsy();
-      expect(screen.queryByText("Password không được ít hơn 6 ký tự")).toBeFalsy();
+      expect(screen.queryByText("Độ dài từ 6 - 160 ký tự")).toBeFalsy();
     });
     fireEvent.submit(submitButton);
     await logScreen();
