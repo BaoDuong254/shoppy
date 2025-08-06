@@ -29,3 +29,6 @@ stats.html
 # Test folder
 coverage
 __snapshots__
+
+*storybook.log
+storybook-static
