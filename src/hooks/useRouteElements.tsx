@@ -2,11 +2,11 @@ import { Navigate, Outlet, useRoutes } from "react-router-dom";
 import { useContext, lazy, Suspense } from "react";
 import RegisterLayout from "@layouts/RegisterLayout";
 import MainLayout from "@layouts/MainLayout";
-import { AppContext } from "./contexts/app.context";
 import path from "@constants/path";
 import CartLayout from "@layouts/CartLayout";
 import UserLayout from "@pages/User/layouts/UserLayout";
 import Loading from "@components/Loading";
+import { AppContext } from "@contexts/app.context";
 
 const Login = lazy(() => import("@pages/Login"));
 const Register = lazy(() => import("@pages/Register"));
