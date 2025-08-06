@@ -218,7 +218,7 @@ Please make sure your code follows the project's coding standards and includes a
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [MIT License](https://github.com/BaoDuong254/shoppy?tab=MIT-1-ov-file#readme).
 
 ## Bug Reports
 

@@ -1,5 +1,30 @@
 {
   "name": "shoppy",
+  "description": "A modern e-commerce website built with React, TypeScript, and Vite. This project is a clone of popular e-commerce platforms featuring product browsing, cart management, user authentication, and multilingual support.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaoDuong254/shoppy.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "react",
+    "typescript",
+    "vite",
+    "react-query",
+    "tailwindcss",
+    "storybook",
+    "i18next",
+    "msw",
+    "jest",
+    "vitest"
+  ],
+  "author": "BaoDuongGia <duonggiabao254@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BaoDuong254/shoppy/issues"
+  },
+  "homepage": "https://github.com/BaoDuong254/shoppy#readme",
   "private": true,
   "version": "0.0.0",
   "type": "module",
