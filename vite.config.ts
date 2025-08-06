@@ -2,6 +2,7 @@ import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react-swc";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { visualizer } from "rollup-plugin-visualizer";
+import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -11,6 +12,7 @@ export default defineConfig({
   },
   test: {
     environment: "jsdom",
+    setupFiles: path.resolve(__dirname, "./vitest.setup.js"),
   },
   // server: {
   //     allowedHosts: [

@@ -8,6 +8,10 @@ import "@testing-library/jest-dom/vitest";
 expect.extend(matchers);
 
 describe("Login", () => {
+  let emailInput: HTMLInputElement;
+  let passwordInput: HTMLInputElement;
+  let submitButton: HTMLButtonElement;
+
   beforeAll(async () => {
     renderWithRouter({
       route: path.login,
@@ -16,14 +20,17 @@ describe("Login", () => {
       expect(screen.queryByPlaceholderText("Nhập email")).toBeInTheDocument();
       expect(screen.queryByPlaceholderText("Nhập mật khẩu")).toBeInTheDocument();
     });
+    emailInput = document.querySelector('form input[type="email"]') as HTMLInputElement;
+    passwordInput = document.querySelector('form input[type="password"]') as HTMLInputElement;
+    submitButton = document.querySelector('form button[type="submit"]') as HTMLButtonElement;
   });
 
   it("Hiển thị lỗi required khi không nhập gì", async () => {
     const submitButton = document.querySelector('form button[type="submit"]') as Element;
     fireEvent.submit(submitButton);
     await waitFor(async () => {
-      expect(await screen.findByText("Email là bắt buộc")).toBeTruthy();
-      expect(await screen.findByText("Password là bắt buộc")).toBeTruthy();
+      expect(screen.queryByText("Email là bắt buộc")).toBeTruthy();
+      expect(screen.queryByText("Password là bắt buộc")).toBeTruthy();
     });
   });
 
@@ -45,9 +52,32 @@ describe("Login", () => {
     });
 
     fireEvent.submit(submitButton);
+    await waitFor(() => {
+      expect(screen.queryByText("Email không đúng định dạng")).toBeTruthy();
+      expect(screen.queryByText("Password không được ít hơn 6 ký tự")).toBeTruthy();
+    });
+  });
 
-    expect(await screen.findByText("Email không đúng định dạng")).toBeTruthy();
-    expect(await screen.findByText("Password không được ít hơn 6 ký tự")).toBeTruthy();
+  it("Không nên hiển thị lỗi khi nhập lại value đúng", async () => {
+    fireEvent.change(emailInput, {
+      target: {
+        value: "test@mail.com",
+      },
+    });
+    fireEvent.change(passwordInput, {
+      target: {
+        value: "123456",
+      },
+    });
+
+    await waitFor(() => {
+      expect(screen.queryByText("Email không đúng định dạng")).toBeFalsy();
+      expect(screen.queryByText("Password không được ít hơn 6 ký tự")).toBeFalsy();
+    });
+    fireEvent.submit(submitButton);
     await logScreen();
+    await waitFor(() => {
+      expect(document.querySelector("title")?.textContent).toBe("Trang chủ | Shoppy");
+    });
   });
 });
