@@ -3,8 +3,9 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as matchers from "@testing-library/jest-dom/matchers";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import "@testing-library/jest-dom/vitest";
+import { logScreen } from "@utils/testUtils";
 
 expect.extend(matchers);
 
@@ -26,8 +27,18 @@ describe("App", () => {
       expect(screen.queryByText("Bạn chưa có tài khoản?")).toBeInTheDocument();
       expect(document.querySelector("title")?.textContent).toBe("Đăng nhập | Shoppy");
     });
+  });
 
-    // debug the current state of the document
-    screen.debug(document.body.parentElement as HTMLElement, 99999999);
+  test("Test trang not found", async () => {
+    const badRoute = "/some/bad/route";
+    render(
+      <MemoryRouter initialEntries={[badRoute]}>
+        <App />
+      </MemoryRouter>
+    );
+    await waitFor(() => {
+      expect(screen.getByText(/Page Not Found/i)).toBeInTheDocument();
+    });
+    await logScreen();
   });
 });
