@@ -9,7 +9,7 @@ import react from "eslint-plugin-react";
 import tsdoc from "eslint-plugin-tsdoc";
 
 export default tseslint.config([
-  globalIgnores(["dist", "node_modules", "vite.config.ts", "coverage", "stats.html"]),
+  globalIgnores(["dist", "node_modules", "vite.config.ts", "coverage", "stats.html", "__snapshots__"]),
   {
     files: ["**/*.{ts,tsx}"],
     extends: [
