@@ -1,18 +1,24 @@
 import CartHeader from "@components/CartHeader";
 import Footer from "@components/Footer";
+import { memo } from "react";
+import { Outlet } from "react-router-dom";
 
 interface Props {
   children?: React.ReactNode;
 }
 
-export default function CartLayout({ children }: Props) {
+function CartLayoutInner({ children }: Props) {
+  console.log("CartLayout");
   return (
     <div>
-      <div>
-        <CartHeader />
-        {children}
-        <Footer />
-      </div>
+      <CartHeader />
+      {children}
+      <Outlet />
+      <Footer />
     </div>
   );
 }
+
+const CartLayout = memo(CartLayoutInner);
+
+export default CartLayout;

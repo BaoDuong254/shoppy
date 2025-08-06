@@ -35,24 +35,26 @@ export default function useRouteElements() {
       element: <RejectedRoute />,
       children: [
         {
-          path: path.login,
-          element: (
-            <RegisterLayout>
-              <Suspense fallback={<Loading />}>
-                <Login />
-              </Suspense>
-            </RegisterLayout>
-          ),
-        },
-        {
-          path: path.register,
-          element: (
-            <RegisterLayout>
-              <Suspense fallback={<Loading />}>
-                <Register />
-              </Suspense>
-            </RegisterLayout>
-          ),
+          path: "",
+          element: <RegisterLayout />,
+          children: [
+            {
+              path: path.login,
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <Login />
+                </Suspense>
+              ),
+            },
+            {
+              path: path.register,
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <Register />
+                </Suspense>
+              ),
+            },
+          ],
         },
       ],
     },
@@ -62,80 +64,86 @@ export default function useRouteElements() {
       children: [
         {
           path: path.cart,
-          element: (
-            <CartLayout>
-              <Suspense fallback={<Loading />}>
-                <Cart />
-              </Suspense>
-            </CartLayout>
-          ),
+          element: <CartLayout />,
+          children: [
+            {
+              path: "",
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <Cart />
+                </Suspense>
+              ),
+            },
+          ],
         },
         {
           path: path.user,
-          element: (
-            <MainLayout>
-              <UserLayout />
-            </MainLayout>
-          ),
+          element: <MainLayout />,
           children: [
             {
-              path: path.profile,
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Profile />
-                </Suspense>
-              ),
-            },
-            {
-              path: path.changePassword,
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <ChangePassword />
-                </Suspense>
-              ),
-            },
-            {
-              path: path.historyPurchase,
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <HistoryPurchase />
-                </Suspense>
-              ),
+              path: "",
+              element: <UserLayout />,
+              children: [
+                {
+                  path: path.profile,
+                  element: (
+                    <Suspense fallback={<Loading />}>
+                      <Profile />
+                    </Suspense>
+                  ),
+                },
+                {
+                  path: path.changePassword,
+                  element: (
+                    <Suspense fallback={<Loading />}>
+                      <ChangePassword />
+                    </Suspense>
+                  ),
+                },
+                {
+                  path: path.historyPurchase,
+                  element: (
+                    <Suspense fallback={<Loading />}>
+                      <HistoryPurchase />
+                    </Suspense>
+                  ),
+                },
+              ],
             },
           ],
         },
       ],
     },
     {
-      path: path.productDetail,
-      element: (
-        <MainLayout>
-          <Suspense fallback={<Loading />}>
-            <ProductDetail />
-          </Suspense>
-        </MainLayout>
-      ),
-    },
-    {
       path: "",
-      index: true,
-      element: (
-        <MainLayout>
-          <Suspense fallback={<Loading />}>
-            <ProductList />
-          </Suspense>
-        </MainLayout>
-      ),
-    },
-    {
-      path: "*",
-      element: (
-        <MainLayout>
-          <Suspense fallback={<Loading />}>
-            <NotFound />
-          </Suspense>
-        </MainLayout>
-      ),
+      element: <MainLayout />,
+      children: [
+        {
+          path: path.productDetail,
+          element: (
+            <Suspense fallback={<Loading />}>
+              <ProductDetail />
+            </Suspense>
+          ),
+        },
+        {
+          path: "",
+          index: true,
+          element: (
+            <Suspense fallback={<Loading />}>
+              <ProductList />
+            </Suspense>
+          ),
+        },
+        {
+          path: "*",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <NotFound />
+            </Suspense>
+          ),
+        },
+      ],
     },
   ]);
   return routeElements;
