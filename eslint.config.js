@@ -13,7 +13,7 @@ import tsdoc from "eslint-plugin-tsdoc";
 
 export default tseslint.config(
   [
-    globalIgnores(["dist", "node_modules", "vite.config.ts", "coverage", "stats.html", "__snapshots__"]),
+    globalIgnores(["dist", "node_modules", "vite.config.ts", "coverage", "stats.html", "__snapshots__", "stories"]),
     {
       files: ["**/*.{ts,tsx}"],
       extends: [
