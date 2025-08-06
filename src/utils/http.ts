@@ -16,7 +16,7 @@ import { isAxiosExpiredTokenError, isAxiosUnauthorizedError } from "./utils";
 import type { ErrorResponse } from "@/types/utils.type";
 import type { AxiosRequestConfig } from "axios";
 
-class Http {
+export class Http {
   instance: AxiosInstance;
   private accessToken: string;
   private refreshToken: string;
