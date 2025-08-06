@@ -7,8 +7,11 @@ import Pagination from "@components/Pagination";
 import type { ProductListConfig } from "@/types/product.type";
 import categoryApi from "@apis/category.api";
 import useQueryConfig from "@hooks/useQueryConfig";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 export default function ProductList() {
+  const { t } = useTranslation("home");
   const queryConfig = useQueryConfig();
 
   const { data: productsData } = useQuery({
@@ -29,6 +32,10 @@ export default function ProductList() {
 
   return (
     <div className='bg-gray-200 py-6'>
+      <Helmet>
+        <title>{t("homepage")} | Shoppy</title>
+        <meta name='description' content='Home page of Shoppy' />
+      </Helmet>
       <div className='container'>
         {productsData && (
           <div className='grid grid-cols-12 gap-6'>
