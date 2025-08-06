@@ -1,14 +1,13 @@
 import "../src/index.css";
-import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import ErrorBoundary from "../src/components/ErrorBoundary";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppProvider } from "../src/contexts/app.context";
 import type { Decorator } from "@storybook/react";
 import type { ReactNode, FC } from "react";
+import { withRouter } from "storybook-addon-remix-react-router";
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -33,17 +32,16 @@ interface StoryProps {
 }
 
 export const decorators: Decorator[] = [
+  withRouter,
   (Story: FC<StoryProps>) => (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <AppProvider>
-          <HelmetProvider>
-            <ErrorBoundary>
-              <Story />
-            </ErrorBoundary>
-          </HelmetProvider>
-        </AppProvider>
-      </QueryClientProvider>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <AppProvider>
+        <HelmetProvider>
+          <ErrorBoundary>
+            <Story />
+          </ErrorBoundary>
+        </HelmetProvider>
+      </AppProvider>
+    </QueryClientProvider>
   ),
 ];
