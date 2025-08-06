@@ -14,7 +14,9 @@
     "test": "vitest --project default",
     "test:storybook": "vitest --project storybook",
     "test:all": "vitest",
-    "coverage": "vitest run --coverage",
+    "coverage": "vitest run --coverage --project default",
+    "coverage:storybook": "vitest run --coverage --project storybook",
+    "coverage:all": "vitest run --coverage",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
