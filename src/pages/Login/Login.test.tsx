@@ -61,12 +61,12 @@ describe("Login", () => {
   it("Không nên hiển thị lỗi khi nhập lại value đúng", async () => {
     fireEvent.change(emailInput, {
       target: {
-        value: "test@mail.com",
+        value: "d3007@gmail.com",
       },
     });
     fireEvent.change(passwordInput, {
       target: {
-        value: "123456",
+        value: "123123",
       },
     });
 

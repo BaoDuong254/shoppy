@@ -16,6 +16,7 @@
       "@assets/*": ["src/assets/*"],
       "@i18n/*": ["src/i18n/*"],
       "@locales/*": ["src/locales/*"],
+      "@msw/*": ["src/msw/*"],
       "@/*": ["src/*"]
     }
   },
