@@ -1,0 +1,14 @@
+{
+  "email_required": "Email là bắt buộc",
+  "email_invalid": "Email không đúng định dạng",
+  "email_min": "Email không được ít hơn {{min}} ký tự",
+  "email_max": "Email không được quá {{max}} ký tự",
+  "password_required": "Mật khẩu là bắt buộc",
+  "password_length": "Độ dài từ {{min}} - {{max}} ký tự",
+  "password_mismatch": "Nhập lại password không khớp",
+  "confirm_password_required": "Nhập lại password là bắt buộc",
+  "price_invalid": "Giá không phù hợp",
+  "name_required": "Tên sản phẩm là bắt buộc",
+  "date_in_past": "Hãy chọn một ngày trong quá khứ",
+  "max_length": "Độ dài tối đa là {{max}} ký tự"
+}

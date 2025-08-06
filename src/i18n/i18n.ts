@@ -5,11 +5,13 @@ import PRODUCT_EN from "@locales/en/product.json";
 import CART_EN from "@locales/en/cart.json";
 import PROFILE_EN from "@locales/en/profile.json";
 import LOGIN_REGISTER_EN from "@locales/en/login_register.json";
+import VALIDATION_EN from "@locales/en/validation.json";
 import HOME_VI from "@locales/vi/home.json";
 import PRODUCT_VI from "@locales/vi/product.json";
 import CART_VI from "@locales/vi/cart.json";
 import PROFILE_VI from "@locales/vi/profile.json";
 import LOGIN_REGISTER_VI from "@locales/vi/login_register.json";
+import VALIDATION_VI from "@locales/vi/validation.json";
 import { getLanguageFromLS } from "@utils/auth";
 
 export const locales = {
@@ -24,6 +26,7 @@ export const resources = {
     cart: CART_EN,
     profile: PROFILE_EN,
     "login-register": LOGIN_REGISTER_EN,
+    validation: VALIDATION_EN,
   },
   vi: {
     home: HOME_VI,
@@ -31,6 +34,7 @@ export const resources = {
     cart: CART_VI,
     profile: PROFILE_VI,
     "login-register": LOGIN_REGISTER_VI,
+    validation: VALIDATION_VI,
   },
 } as const;
 
@@ -39,7 +43,7 @@ export const defaultNS = "product";
 i18n.use(initReactI18next).init({
   resources,
   lng: getLanguageFromLS(),
-  ns: ["home", "product", "cart", "profile", "login-register"],
+  ns: ["home", "product", "cart", "profile", "login-register", "validation"],
   fallbackLng: "vi",
   defaultNS,
   interpolation: {

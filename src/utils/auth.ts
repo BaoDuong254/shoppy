@@ -52,7 +52,6 @@ export const setLanguageToLS = (language: "en" | "vi") => {
 export const clearLS = () => {
   localStorage.removeItem("access_token");
   localStorage.removeItem("refresh_token");
-  localStorage.removeItem("language");
   localStorage.removeItem("profile");
   const clearLSEvent = new Event("clearLS");
   LocalStorageEventTarget.dispatchEvent(clearLSEvent);

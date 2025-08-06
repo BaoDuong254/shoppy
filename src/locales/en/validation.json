@@ -1,0 +1,14 @@
+{
+  "email_required": "Email is required",
+  "email_invalid": "Email format is invalid",
+  "email_min": "Email must be at least {{min}} characters",
+  "email_max": "Email must not exceed {{max}} characters",
+  "password_required": "Password is required",
+  "password_length": "Length from {{min}} - {{max}} characters",
+  "password_mismatch": "Password confirmation does not match",
+  "confirm_password_required": "Password confirmation is required",
+  "price_invalid": "Price is invalid",
+  "name_required": "Product name is required",
+  "date_in_past": "Please select a date in the past",
+  "max_length": "Maximum length is {{max}} characters"
+}
