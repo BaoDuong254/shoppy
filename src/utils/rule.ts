@@ -1,16 +1,15 @@
-import type { RegisterOptions, UseFormGetValues } from "react-hook-form";
 import * as yup from "yup";
 
-interface FormData {
-  email: string;
-  password: string;
-  confirm_password: string;
-}
-
-type Rules = {
-  [key in "email" | "password" | "confirm_password"]?: RegisterOptions<FormData, key>;
-};
-
+/**
+ * Validates that the price range is correct.
+ *
+ * @remarks
+ * This function checks if both `price_min` and `price_max` are provided and ensures that `price_max` is greater than or equal to `price_min`.
+ * If either `price_min` or `price_max` is empty, it allows the validation to pass as long as at least one of them is provided.
+ *
+ * @param this - The context of the test, which includes the parent object containing `price_min` and `price_max`.
+ * @returns A boolean indicating whether the price range is valid.
+ */
 function testPriceMinMax(this: yup.TestContext<yup.AnyObject>) {
   const { price_min, price_max } = this.parent as { price_min: string; price_max: string };
   if (price_min !== "" && price_max !== "") {
@@ -19,6 +18,12 @@ function testPriceMinMax(this: yup.TestContext<yup.AnyObject>) {
   return price_min !== "" || price_max !== "";
 }
 
+/**
+ * Creates a Yup validation schema for confirming passwords.
+ *
+ * @param refString - The reference string to compare against, typically the name of the password field.
+ * @returns A Yup string schema that requires the field to match the specified password field.
+ */
 const handleConfirmPasswordYup = (refString: string) => {
   return yup
     .string()
@@ -27,60 +32,6 @@ const handleConfirmPasswordYup = (refString: string) => {
     .max(160, "Độ dài từ 6 - 160 ký tự")
     .oneOf([yup.ref(refString)], "Nhập lại password không khớp");
 };
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getRules = (getValues?: UseFormGetValues<any>): Rules => ({
-  email: {
-    required: {
-      value: true,
-      message: "Email là bắt buộc",
-    },
-    pattern: {
-      value: /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim,
-      message: "Email không hợp lệ",
-    },
-    maxLength: {
-      value: 160,
-      message: "Email không được quá 160 ký tự",
-    },
-    minLength: {
-      value: 5,
-      message: "Email không được ít hơn 5 ký tự",
-    },
-  },
-  password: {
-    required: {
-      value: true,
-      message: "Password là bắt buộc",
-    },
-    minLength: {
-      value: 6,
-      message: "Password không được ít hơn 6 ký tự",
-    },
-    maxLength: {
-      value: 160,
-      message: "Password không được quá 160 ký tự",
-    },
-  },
-  confirm_password: {
-    required: {
-      value: true,
-      message: "Nhập lại password là bắt buộc",
-    },
-    minLength: {
-      value: 6,
-      message: "Nhập lại password không được ít hơn 6 ký tự",
-    },
-    maxLength: {
-      value: 160,
-      message: "Nhập lại password không được quá 160 ký tự",
-    },
-    validate:
-      typeof getValues === "function"
-        ? (value) => value === getValues("password") || "Nhập lại password không khớp"
-        : undefined,
-  },
-});
 
 export const schema = yup.object({
   email: yup
