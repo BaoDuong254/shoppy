@@ -5,6 +5,10 @@ import ProductDetail from "@pages/ProductDetail";
 export default {
   title: "Layouts/MainLayout",
   component: MainLayout,
+  tags: ["autodocs"],
+  parameters: {
+    layout: "fullscreen",
+  },
   argTypes: {
     children: {
       description: "Body của layout",
