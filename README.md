@@ -53,7 +53,7 @@ A modern e-commerce website built with React, TypeScript, and Vite. This project
 - **DOMPurify** - HTML sanitization
 - **MSW (Mock Service Worker)** - API mocking for testing
 
-## 📦 Installation
+## Installation
 
 1. **Clone the repository**
 
@@ -79,7 +79,7 @@ A modern e-commerce website built with React, TypeScript, and Vite. This project
    **Environment Variables:**
    - `VITE_API_BASE_URL`: The base URL for your API server (required)
 
-## 🚀 Running the Project
+## Running the Project
 
 ### Development Server
 
